@@ -1,7 +1,13 @@
 from flask import Flask, request
-import subprocess
 from dotenv import load_dotenv
+from subprocess import check_output
 import os
+
+
+
+def deploy_shell():
+    stdout = check_output(['./deploy.sh']).decode('utf-8')
+    return stdout
 
 load_dotenv()
 
@@ -15,8 +21,11 @@ def hello():
 
 @app.route('/deploy', methods=['POST'])
 def deploy():
+
     if request.method == 'POST':
-        subprocess.call([f'/home/{username}/pyrhonanywhere/deploy.sh'])
+        # subprocess.call([f'/home/{username}/pyrhonanywhere/deploy.sh']) #
+        deploy_shell()
+        app.logger.error(f'POST success')
         return 'Deployed successfully', 200
     else:
         return 'Method not allowed', 405
