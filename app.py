@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello, Narzędzia do automatyzacji budowy oprogramowania!\nVersion: 1.0.3 (post webhook 2)"
+    return "Hello, Narzędzia do automatyzacji budowy oprogramowania!\nVersion: 1.1"
 
 @app.route('/deploy', methods=['POST'])
 def deploy():
