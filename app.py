@@ -1,6 +1,11 @@
 from flask import Flask, request
 import subprocess
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
+username = os.getenv('USERNAME')
 
 app = Flask(__name__)
 
@@ -11,8 +16,7 @@ def hello():
 @app.route('/deploy', methods=['POST'])
 def deploy():
     if request.method == 'POST':
-        # Запустіть ваш deploy.sh скрипт
-        subprocess.call(['./deploy.sh'])
+        subprocess.call([f'/home/{username}/pyrhonanywhere/deploy.sh'])
         return 'Deployed successfully', 200
     else:
         return 'Method not allowed', 405
