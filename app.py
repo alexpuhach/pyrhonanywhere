@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello, Narzędzia do automatyzacji budowy oprogramowania!\nVersion: 1.2"
+    return "Hello, Narzędzia do automatyzacji budowy oprogramowania!\nVersion: 1.2.1"
 
 @app.route('/deploy', methods=['POST'])
 def deploy():
