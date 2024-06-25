@@ -3,15 +3,14 @@ from dotenv import load_dotenv
 from subprocess import check_output
 import os
 
-
-
-def deploy_shell():
-    stdout = check_output(['./deploy.sh']).decode('utf-8')
-    return stdout
-
 load_dotenv()
 
 username = os.getenv('USERNAME')
+
+def deploy_shell():
+    stdout = check_output(['/home/{username}/pyrhonanywhere/deploy.sh']).decode('utf-8')
+    return stdout
+
 
 app = Flask(__name__)
 
